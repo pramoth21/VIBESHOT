@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vibe-Shot | Sri Lanka</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Cinzel:wght@700&family=Mukta:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="hero">
+    <!-- ✅ OLD NAVBAR (unchanged) -->
+    <nav>
+      <div class="nav-container">
+        <img src="logo1.png" class="logo1" alt="Logo">
+        <div class="menu">
+          <ul>
+            <li><a href="client_register.php">REGISTER</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+            <li><a href="blog.html">BLOG</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <a href="logindash.html" class="login-btn">LOGIN</a>
+       
+      </div>
+    </nav>
+
+    <!-- hero overlay + content -->
+    <div class="hero-overlay"></div>
+
+    <div class="content">
+      <h1>VIBE - <span class="high">SHOT</span></h1>
+
+      <p class="par">
+        We make it easy to book your photo shoot.<br>
+        Choose a theme, pick a photographer,
+        and chat with us online.<br>
+        Capture your special moments with Vibe - Shot.
+      </p>
+
+      <div class="cta-row">
+        <button class="logbtn magnet" data-strength="18">
+          <a href="logindash.html">GET START</a>
+        </button>
+        <a class="ghost-link" href="blog.html">
+          <span>Explore Tips</span> <i class="fa-solid fa-arrow-right-long"></i>
+        </a>
+      </div>
+
+      <!-- subtle floating orbs -->
+      <div class="orb orb-a"></div>
+      <div class="orb orb-b"></div>
+    </div>
+  </div>
+
+  <!-- INFO -->
+  <section class="info-section">
+    <div class="info-container">
+      <h2>Why Choose Vibe - Shot?</h2>
+      <div class="info-boxes">
+        <div class="info-box tilt">
+          <i class="fas fa-camera-retro"></i>
+          <h3>Professional Photography</h3>
+          <p>Browse themed indoor & outdoor packages curated by top photographers.</p>
+        </div>
+        <div class="info-box tilt">
+          <i class="fas fa-calendar-check"></i>
+          <h3>Instant Booking</h3>
+          <p>Book real-time slots and get instant confirmation with secure payments.</p>
+        </div>
+        <div class="info-box tilt">
+          <i class="fas fa-comments"></i>
+          <h3>Live Chat Support</h3>
+          <p>Talk directly to the studio team through our inbuilt chat system.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-section">
+    <h2>Explore Our Themes</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item card-reveal">
+        <div class="img-wrap">
+          <img src="images/indoor.jpg" alt="Indoor Theme">
+        </div>
+        <div class="card-body">
+          <h4>Indoor Studio Setup</h4>
+          <p>Capture your style in our themed indoor rooms with props and lighting.</p>
+        </div>
+      </div>
+
+      <div class="gallery-item card-reveal">
+        <div class="img-wrap">
+          <img src="images/outdoor.jpg" alt="Outdoor">
+        </div>
+        <div class="card-body">
+          <h4>Outdoor Natural Shoot</h4>
+          <p>Go scenic! Outdoor photography sessions in beautiful Sri Lankan landscapes.</p>
+        </div>
+      </div>
+
+      <div class="gallery-item card-reveal">
+        <div class="img-wrap">
+          <img src="images/baby.jpg" alt="Baby Room">
+        </div>
+        <div class="card-body">
+          <h4>Baby Room Theme</h4>
+          <p>Adorable baby sessions in pastel-themed, cozy studio setups.</p>
+        </div>
+      </div>
+
+      <div class="gallery-item card-reveal">
+        <div class="img-wrap">
+          <img src="images/couple.jpg" alt="Couple Shoot">
+        </div>
+        <div class="card-body">
+          <h4>Romantic Couple Sessions</h4>
+          <p>Memorable couple portraits with natural chemistry and elegant framing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; Vibe-Shot Studio, Colombo. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Motion JS -->
+  <script>
+    // scroll reveal (info + gallery)
+    const revealables = document.querySelectorAll('.info-box, .gallery-item');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('reveal');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.25 });
+    revealables.forEach(el => io.observe(el));
+
+    // parallax overlay & orbs (subtle; hero only)
+    const overlay = document.querySelector('.hero-overlay');
+    const orbs = document.querySelectorAll('.orb');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY * 0.12;
+      overlay.style.transform = `translateY(${y}px)`;
+      orbs.forEach((o, i) => o.style.transform = `translateY(${y * (i+1) * 0.4}px)`);
+    });
+
+    // magnetic CTA
+    document.querySelectorAll('.magnet').forEach(btn => {
+      const s = Number(btn.dataset.strength || 16);
+      btn.addEventListener('mousemove', (e) => {
+        const r = btn.getBoundingClientRect();
+        const x = e.clientX - (r.left + r.width/2);
+        const y = e.clientY - (r.top + r.height/2);
+        btn.style.transform = `translate(${x/s}px, ${y/s}px)`;
+      });
+      btn.addEventListener('mouseleave', () => btn.style.transform = 'translate(0,0)');
+    });
+  </script>
+</body>
+</html>

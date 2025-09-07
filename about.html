@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - VibeShot Studio</title>
+  <link rel="stylesheet" href="about.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+ 
+  <nav>
+    <div class="nav-container">
+      <img src="logo1.png" class="logo1" alt="Logo">
+      <div class="menu">
+        <ul>
+          <li><a href="client_register.php">REGISTER</a></li>
+          <li><a href="home.html">HOME</a></li>
+          <li><a href="blog.html">BLOG</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <a href="logindash.html" class="login-btn">LOGIN</a>
+    
+    </div>
+  </nav>
+
+  
+  <header class="about-hero">
+    <h1>Welcome to VibeShot Studio</h1>
+    <p>Capturing your stories through stunning photography and vibrant creativity.</p>
+  </header>
+
+  
+  <section class="carousel-wrapper">
+    <div class="carousel" id="carousel">
+      <div class="carousel-item active">
+        <img src="images/about2.jpg" alt="Photographer 1">
+        <p>Professional Outdoor Sessions</p>
+      </div>
+      <div class="carousel-item">
+        <img src="images/about1.png" alt="Studio Setup">
+        <p>Indoor Studio with Theme Rooms</p>
+      </div>
+      <div class="carousel-item">
+        <img src="images/about3.jpg" alt="Client Shoot">
+        <p>Personalized Client Shoots</p>
+      </div>
+      <div class="carousel-item">
+        <img src="images/about4.jpg" alt="Gear">
+        <p>Top-tier Photography Gear</p>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="indoor-section">
+    <h2>Indoor Themed Rooms</h2>
+    <div class="indoor-gallery">
+      <div class="indoor-card fade-in" onclick="openLightbox('images/about6.jpg')">
+        <img src="images/about6.jpg" alt="Indoor Theme 1" />
+        <div class="caption">Vintage Pastel Room</div>
+      </div>
+      <div class="indoor-card fade-in" onclick="openLightbox('images/about7.jpg')">
+        <img src="images/about7.jpg" alt="Indoor Theme 2" />
+        <div class="caption">Royal Family Setup</div>
+      </div>
+      <div class="indoor-card fade-in" onclick="openLightbox('images/about5.jpg')">
+        <img src="images/about5.jpg" alt="Indoor Theme 3" />
+        <div class="caption">Modern Minimalist Studio</div>
+      </div>
+    </div>
+  </section>
+
+  
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Zoomed Indoor" />
+  </div>
+
+
+<section class="about-content">
+  <div class="content-wrapper">
+    <h2 class="section-title">Our Vision</h2>
+    <p class="section-paragraph">At VibeShot Studio, our vision is to elevate photography into an immersive storytelling experience. We blend creativity, cutting-edge technology, and personalized service to capture moments that speak beyond frames.</p>
+
+    <h2 class="section-title">What We Offer</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <i class="fas fa-camera-retro"></i>
+        <h3>Theme-Based Shoots</h3>
+        <p>Choose from a variety of styled indoor setups or book outdoor sessions with a personalized theme.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-user-friends"></i>
+        <h3>Client & Photographer Portal</h3>
+        <p>Interactive web dashboard for seamless booking, profile management, and real-time communication.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-cogs"></i>
+        <h3>Admin Management</h3>
+        <p>Secure admin dashboard for managing photographers, bookings, themes, and chat system.</p>
+      </div>
+      <div class="feature-card">
+  <i class="fas fa-calendar-check"></i>
+  <h3>Flexible Booking</h3>
+  <p>Schedule your shoots at your convenience with instant booking and date availability checks.</p>
+</div>
+<div class="feature-card">
+  <i class="fas fa-lightbulb"></i>
+  <h3>Creative Direction</h3>
+  <p>Our team offers styling advice and pose guidance to bring out your best in every shot.</p>
+</div>
+      <div class="feature-card">
+        <i class="fas fa-magic"></i>
+        <h3>Editing & Delivery</h3>
+        <p>Professional photo retouching and timely digital delivery of high-resolution images.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Our Team</h2>
+    <p class="section-paragraph">We're a passionate crew of photographers, editors, and creators who are committed to making each shoot vibrant, professional, and uniquely tailored to your story. Every frame is a result of passion, planning, and purpose.</p>
+  </div>
+</section>
+ 
+  <footer class="footer">
+    <p>&copy; 2025 VibeShot Studio | Colombo, Sri Lanka | All rights reserved</p>
+  </footer>
+
+
+  <script>
+    const carousel = document.getElementById("carousel");
+    let items = carousel.querySelectorAll(".carousel-item");
+    let index = 0;
+
+    function rotateCarousel() {
+      items.forEach(item => item.classList.remove("active"));
+      index = (index + 1) % items.length;
+      items[index].classList.add("active");
+    }
+
+    setInterval(rotateCarousel, 3000);
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    function openLightbox(src) {
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      lightboxImg.src = src;
+      lightbox.classList.add("active");
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").classList.remove("active");
+      document.getElementById("lightbox-img").src = '';
+    }
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeLightbox();
+    });
+  </script>
+</body>
+</html>

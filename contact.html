@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - VibeShot Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+  <div class="nav-container">
+    <img src="logo1.png" class="logo1" alt="Logo">
+    <div class="menu">
+      <ul>
+        <li><a href="client_register.php">REGISTER</a></li>
+        <li><a href="about.html">ABOUT US</a></li>
+        <li><a href="blog.html">BLOG</a></li>
+        <li><a href="home.html">HOME</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="nav-buttons">
+    <a href="logindash.html" class="login-btn">LOGIN</a>
+  </div>
+</nav>
+
+<!-- Contact Header -->
+<header class="contact-header">
+  <h1>Contact VibeShot Studio</h1>
+  <p>Let’s create something beautiful together. Reach out to us for bookings, collaborations, or questions.</p>
+</header>
+
+<!-- Contact Section -->
+<section class="contact-wrapper">
+  <div class="contact-card animate">
+    <div class="contact-info">
+      <h2>Get in Touch</h2>
+      <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> Havelock, Colombo, Sri Lanka</p>
+      <p><i class="fas fa-phone-alt"></i> <strong>Phone:</strong> +94 740 440 553</p>
+      <p><i class="fas fa-envelope"></i> <strong>Email:</strong> contact@vibeshot.com</p>
+      <p><i class="fab fa-instagram"></i> <strong>Instagram:</strong> @vibeshot</p>
+      <p><i class="fab fa-linkedin"></i> <strong>LinkedIn:</strong> linkedin.com/company/vibeshot</p>
+    </div>
+
+    <div class="map-box">
+      <iframe src="https://www.google.com/maps?q=Havelock,Colombo,Sri%20Lanka&output=embed" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>&copy; 2025 VibeShot Studio | Colombo, Sri Lanka | All rights reserved</p>
+</footer>
+
+<!-- Animation Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const elements = document.querySelectorAll(".contact-card");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.3 });
+
+    elements.forEach(el => observer.observe(el));
+  });
+</script>
+
+</body>
+</html>
